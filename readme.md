@@ -21,7 +21,7 @@ Asegúrate de tener instalados y activados los siguientes plugins antes de utili
    - Nombre del directorio: `terachat_notifications`
 
 2. **Woocommerce Subscriptions** - Versión 1.0 o superior.
-   - Enlace: [Digital License Manager Pro](https://woocommerce.com/es-es/products/woocommerce-subscriptions/)
+   - Enlace: [Woocommerce Subscriptions](https://woocommerce.com/es-es/products/woocommerce-subscriptions/)
    - Nombre del directorio: `woocommerce-subscriptions`
 
 Estos plugins son necesarios para que Terachat Notifications WCS Extension funcione correctamente, ya que utiliza sus funcionalidades para integrar las notificaciones con la plataforma externa "Tera Chat".
@@ -44,4 +44,4 @@ Una vez que el plugin esté configurado correctamente, enviará automáticamente
 Este plugin está bajo la Licencia GNU General Public License v2.0. Puedes consultar el archivo LICENSE para más detalles.
 
 
-¡Gracias por usar Terachat Notifications DLM Extension!
+¡Gracias por usar Terachat Notifications WooCommerce Subscriptions Extension!
