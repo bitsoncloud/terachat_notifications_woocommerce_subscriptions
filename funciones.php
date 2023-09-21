@@ -1,6 +1,6 @@
 <?php
 
-add_filter("sam_order_statuses", "insert_teranotif_sub_stats");
+add_filter("tera_notif_order_statuses", "insert_teranotif_sub_stats");
 function insert_teranotif_sub_stats($stats){
     $new_stats = [
         "actives" => "Suscripción Activa",
@@ -11,6 +11,11 @@ function insert_teranotif_sub_stats($stats){
 
     $stats = array_merge($stats, $new_stats);
     return $stats;
+}
+
+add_filter("tera_notif_add_variables", "tera_notif_sub_variables", 10, 2);
+function tera_notif_sub_variables( $msg, $orden){
+    
 }
 
 add_action('woocommerce_subscription_status_active', 'teranotif_sub_start', 10, 1);
@@ -24,7 +29,7 @@ function teranotif_sub_start($sub_id){
     $phone = $orden->get_billing_phone();
     $phoneFormatted = test_number($phone);
 
-    $msg = get_option("sam_order_actives");
+    $msg = get_option("tera_notif_order_actives");
     $suscripcion->add_order_note($msg." ".$phoneFormatted." ".$suscripcion->get_last_order());
     $msg = parseMSG($msg, $orden->get_id());
     $suscripcion->add_order_note($msg." ".$phoneFormatted." ".$orden->get_id());
@@ -37,7 +42,7 @@ function teranotif_sub_cancelled($sub_id){
     $phone = $orden->get_billing_phone();
     $phoneFormatted = test_number($phone);
 
-    $msg = get_option("sam_order_cancelleds");
+    $msg = get_option("tera_notif_order_cancelleds");
     $msg = parseMSG($msg, $orden->get_id());
     if($msg != "") tera_notif_text_message($phoneFormatted, $msg);
 }
@@ -48,7 +53,7 @@ function teranotif_sub_trial_end($sub_id){
     $phone = $orden->get_billing_phone();
     $phoneFormatted = test_number($phone);
 
-    $msg = get_option("sam_order_trialends");
+    $msg = get_option("tera_notif_order_trialends");
     $msg = parseMSG($msg, $orden->get_id());
     if($msg != "") tera_notif_text_message($phoneFormatted, $msg);
 }
@@ -59,7 +64,7 @@ function teranotif_sub_pending_cancel($sub_id){
     $phone = $orden->get_billing_phone();
     $phoneFormatted = test_number($phone);
 
-    $msg = get_option("sam_order_pcancels");
+    $msg = get_option("tera_notif_order_pcancels");
     $msg = parseMSG($msg, $orden->get_id());
     if($msg != "") tera_notif_text_message($phoneFormatted, $msg);
 }
